@@ -19,7 +19,7 @@ if($_POST){
     echo '</br>';
     $saltedpassword = addSalt($_POST['mot de password']);
     var_dump($saltedpassword);
-    $encodepassword = encodeName($saltedpassword);
+    $encodepassword = $encodepassword($saltedpassword);
      echo '</br>';
     var_dump ($encodepassword);
 
