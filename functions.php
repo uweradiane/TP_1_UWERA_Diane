@@ -1,34 +1,31 @@
 <?php
-function nameLengthIsvalid($passwordToValid)
+function passwordLengthIsvalid($passwordToValid)
 {
     //minimum 6 max 10
     $length = strlen($passwordToValid);
-    $responses = [
+    $result = [
         'isValid'=>true,
-        'msg'=>''
+        'msg'=>'mot de passe est correct'
     ];
-    if ($length <6){
-        $responses = [
+    if ($length <6 ||$length >10 ){
+        $result = [
             'isValid'=>false,
-            'msg'=>'Mode de passe est trop court'
+            'msg'=>'Mot de passe est trop court ou trop long'
         ];
     }
-    elseif($length >10){
-        $reponses=[
-            'isValid'=>false,
-            'msg'=>'mode de est trop long'
-        ];
-    }
-    return $responses;
+    
+   
+    return $result;
 };
 function addSalt($passwordToSalt){
-    $salt = ' ABC 1234@';
-    $saltedpassword = $salt.$passwordToSalt.$salt;
-    return $saltedpassword;
+    $salt = 'Diane12345@';
+    $saltedPassword = $salt.$passwordToSalt.$salt;
+
+    return $saltedPassword;
 }
-function encodepassword($saltedpassword){
-    $encodepassword = sha1($saltedpassword);
-    return $encodepassword;
+function encodePassword($saltedPassword){
+    $encodePassword = sha1($saltedPassword);
+    return $encodePassword;
 }
 
 ?>

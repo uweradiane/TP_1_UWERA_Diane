@@ -1,27 +1,66 @@
 <?php
+// 2 character salt
+
 require_once("functions.php");
-var_dump($_POST);
+//var_dump($_POST);
+
+   // le mot de passe 
 if($_POST){
-    $name = $_POST['mot de passe'];
+    $password = $_POST['password'];
     if (empty($password)){
         echo "</br> password is empty ";
     }
-    else{
-        echo "<br> Mon nom est:  " . $password;
+
+    if($passwordLengthIsValid = passwordLengthIsvalid($_POST['password'])){
+        echo "";
     }
-    $nameLengthIsValid = nameLengthIsvalid($_POST['mot de passe']);
     echo '</br>';
-    var_dump($passwordLengthIsValid);
+    
     if(!$passwordLengthIsValid['isValid']){
-        //on fait note traitement
+        //on faisst note traitement
     }
+    else{
+        
+        echo "";
+       
+    }
+    
+    
 };
+
+     
+     $LastName = $_POST['LastName'];
+     $FirstName = $_POST['FirstName'];
+     $age = $_POST['age'];
+     $user=$_POST['user'];
+     $passwordConfirm=$_POST['passwordConfirm'];
+     // confirmation de mot de passe
+if($_POST){
+    
+    if ($password==$passwordConfirm){
+        
+        echo '</br>';
+             echo "<br> Le nom est:  " . $LastName;
+             echo "<br> Le prenom est:  " . $FirstName;
+             echo "<br> L' age est:  " . $age;
+             echo "<br> L' user est:  " . $user;
+    
+
     echo '</br>';
-    $saltedpassword = addSalt($_POST['mot de password']);
-    var_dump($saltedpassword);
-    $encodepassword = $encodepassword($saltedpassword);
-     echo '</br>';
-    var_dump ($encodepassword);
+}
+    else{
+    echo "Le mode de passe est incorect ecrit l autre";
+    
+    }
+    echo '</br>';
 
-
+};
+$saltedPassword = addSalt($_POST['password']);
+    var_dump($saltedPassword);
+    $encodePassword = encodePassword($saltedPassword);
+     
+    var_dump ($encodePassword);
+   
+    
 ?>
+<a href ="./index.php"> return to the main form</a>
